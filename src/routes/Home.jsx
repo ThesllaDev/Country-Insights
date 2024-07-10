@@ -1,9 +1,49 @@
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import SearchAndFilter from "../components/SearchAndFilter";
+import "../styles/Home.scss";
+
 export default function Home() {
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [region, setRegion] = useState("");
+
+  const getDatas = async () => {
+    try {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getDatas();
+  }, []);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearch(e.target.value);
+  }, []);
+
+  const handleRegionChange = useCallback((e) => {
+    setRegion(e.target.value);
+  }, []);
+
+  const filteredCountries = data.filter((country) => {
+    return (
+      country.name.common.toLowerCase().includes(search.toLowerCase()) &&
+      (region ? country.region === region : true)
+    );
+  });
+
+  console.log(data);
+
   return (
-    <h1>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quas optio
-      nam quos magnam accusamus reiciendis voluptatum delectus esse libero
-      maiores, facere dolore repellendus. Delectus iusto magni quia id ratione.
-    </h1>
+    <main>
+      <SearchAndFilter
+        onSearchChange={handleSearchChange}
+        onRegionChange={handleRegionChange}
+      />
+    </main>
   );
 }
