@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import SearchAndFilter from "../components/SearchAndFilter";
+import CountriesCard from "../components/CountriesCard";
 import "../styles/Home.scss";
 
 export default function Home() {
@@ -44,6 +45,11 @@ export default function Home() {
         onSearchChange={handleSearchChange}
         onRegionChange={handleRegionChange}
       />
+      <article>
+        {filteredCountries.map((country) => (
+          <CountriesCard key={country.cca3} datas={country} />
+        ))}
+      </article>
     </main>
   );
 }

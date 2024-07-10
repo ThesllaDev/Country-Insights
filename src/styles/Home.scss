@@ -1,3 +1,13 @@
 main {
 	padding: 32px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+article {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 32px;
 }
