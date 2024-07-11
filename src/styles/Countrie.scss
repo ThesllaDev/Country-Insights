@@ -1,0 +1,61 @@
+@use "variables" as var;
+
+.countrie-details {
+  padding: 32px;
+  box-shadow: none;
+
+  span,
+  p {
+    font-weight: bold;
+  }
+
+  nav {
+    box-shadow: none;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section {
+    margin-top: 32px;
+
+    div {
+      gap: 32px;
+    }
+  }
+
+  img {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+button {
+  padding: 16px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px var.$gray;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .countrie-details {
+    div {
+      flex-direction: row;
+    }
+
+    section {
+      margin-left: 96px;
+
+      div {
+        gap: 128px;
+      }
+    }
+  }
+}

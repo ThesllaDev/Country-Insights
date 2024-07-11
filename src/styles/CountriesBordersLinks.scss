@@ -1,0 +1,21 @@
+@use "variables" as var;
+
+.countries-borders {
+  display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	li {
+		margin: 16px 0;
+	}
+
+  a {
+		border-radius: 5px;
+    box-shadow: 0px 0px 10px var.$gray;
+		padding: 8px 16px;
+
+		&:hover {
+			background-color: var.$gray;
+		}
+  }
+}
