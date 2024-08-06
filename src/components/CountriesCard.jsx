@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/CountriesCard.scss";
 
-function CountriesCard({
-  datas
-}) {
-
+function CountriesCard({ datas }) {
   return (
     <>
       <Link to={`/countrie/${datas.cca3}`}>
